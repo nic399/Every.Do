@@ -8,6 +8,7 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "ToDo.h"
 
 @interface MasterViewController ()
 
@@ -37,14 +38,48 @@
 
 
 - (void)insertNewObject:(id)sender {
+    // Called when the '+' on the top right of the navigation bar is tapped
+    NSLog(@"In insertNewObject");
     if (!self.objects) {
         self.objects = [[NSMutableArray alloc] init];
     }
-    [self.objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    ToDo *newToDo = [[ToDo alloc] init];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add New ToDo" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"ToDo Title";
+    }];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"ToDo Description";
+    }];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"ToDo Priority";
+    }];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        newToDo.title = alert.textFields[0].text;
+        newToDo.todoDescription = alert.textFields[1].text;
+        newToDo.priority = [alert.textFields[2].text integerValue];
+        [alert dismissViewControllerAnimated:true completion:nil];
+        NSLog(@"Alert completed");
+        [self.objects insertObject:newToDo atIndex:0];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadData];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [alert dismissViewControllerAnimated:true completion:nil];
+    }];
+    [alert addAction:ok];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:true completion:^{
+        
+    }];
+    
 }
-
 
 #pragma mark - Segues
 
@@ -71,10 +106,12 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"In tableViewCellForRowAtIndexPath");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    ToDo *object = self.objects[indexPath.row];
+    cell.detailTextLabel.text = object.todoDescription;
+    cell.textLabel.text = object.title;
     return cell;
 }
 
@@ -86,6 +123,7 @@
 
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"In tableViewCommitEditingStyleForRowAtIndexPath");
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.objects removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];

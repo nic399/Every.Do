@@ -14,6 +14,7 @@
 		013E50E61F96805A00BC08BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 013E50E51F96805A00BC08BD /* Assets.xcassets */; };
 		013E50E91F96805A00BC08BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 013E50E71F96805A00BC08BD /* LaunchScreen.storyboard */; };
 		013E50EC1F96805A00BC08BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 013E50EB1F96805A00BC08BD /* main.m */; };
+		013E50F41F9684AB00BC08BD /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = 013E50F31F9684AB00BC08BD /* ToDo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		013E50E81F96805A00BC08BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		013E50EA1F96805A00BC08BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		013E50EB1F96805A00BC08BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		013E50F21F9684AB00BC08BD /* ToDo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDo.h; sourceTree = "<group>"; };
+		013E50F31F9684AB00BC08BD /* ToDo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				013E50DD1F96805A00BC08BD /* MasterViewController.m */,
 				013E50DF1F96805A00BC08BD /* DetailViewController.h */,
 				013E50E01F96805A00BC08BD /* DetailViewController.m */,
+				013E50F21F9684AB00BC08BD /* ToDo.h */,
+				013E50F31F9684AB00BC08BD /* ToDo.m */,
 				013E50E21F96805A00BC08BD /* Main.storyboard */,
 				013E50E51F96805A00BC08BD /* Assets.xcassets */,
 				013E50E71F96805A00BC08BD /* LaunchScreen.storyboard */,
@@ -147,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				013E50F41F9684AB00BC08BD /* ToDo.m in Sources */,
 				013E50DE1F96805A00BC08BD /* MasterViewController.m in Sources */,
 				013E50DB1F96805A00BC08BD /* AppDelegate.m in Sources */,
 				013E50EC1F96805A00BC08BD /* main.m in Sources */,
