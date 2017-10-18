@@ -43,9 +43,11 @@
             toDoCompleted = @"ToDo complete!";
         }
         else {
-            NSDateFormatter *dateFormatter;
-            //toDoCompleted = myToDo.deadline;
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            dateFormatter.dateFormat = @"MMM d, yyyy h:mm a";
+            toDoCompleted = [dateFormatter stringFromDate:myToDo.deadline];
         }
+        self.deadlineLabel.text = toDoCompleted;
     }
 }
 

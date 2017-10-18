@@ -91,7 +91,7 @@
         [self.objects insertObject:newToDo atIndex:0];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        self.objects = [[self.objects sortedArrayUsingSelector:@selector(compare:)] mutableCopy];
+        self.objects = [[self.objects sortedArrayUsingSelector:@selector(comparePriority:)] mutableCopy];
         [alert dismissViewControllerAnimated:true completion:nil];
         NSLog(@"Alert completed");
 
