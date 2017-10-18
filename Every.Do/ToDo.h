@@ -13,6 +13,9 @@
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *todoDescription;
 @property (nonatomic) NSInteger priority;
-@property (nonatomic) BOOL status;
+@property (nonatomic) BOOL complete;
+@property (nonatomic) NSDate *deadline;
+
+-(instancetype)initWithTitle:(NSString *)title description:(NSString *)toDoDescription priority:(NSInteger)priority deadline:(NSDate *)deadline;
 
 @end

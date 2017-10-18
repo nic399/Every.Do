@@ -10,6 +10,9 @@
 #import "ToDo.h"
 
 @interface DetailViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priorityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *deadlineLabel;
 
 @end
 
@@ -30,7 +33,19 @@
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        ToDo *myToDo = self.detailItem;
+        self.navigationItem.title = myToDo.title;
+        self.detailDescriptionLabel.text = myToDo.todoDescription;
+        self.titleLabel.text = myToDo.title;
+        self.priorityLabel.text = [NSString stringWithFormat:@"Priority: %ld", (long)myToDo.priority];
+        NSString *toDoCompleted;
+        if (myToDo.complete) {
+            toDoCompleted = @"ToDo complete!";
+        }
+        else {
+            NSDateFormatter *dateFormatter;
+            //toDoCompleted = myToDo.deadline;
+        }
     }
 }
 
