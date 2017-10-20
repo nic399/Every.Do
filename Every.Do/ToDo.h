@@ -19,5 +19,8 @@
 -(instancetype)initWithTitle:(NSString *)title description:(NSString *)toDoDescription priority:(NSInteger)priority deadline:(NSDate *)deadline;
 
 -(NSComparisonResult)comparePriority:(ToDo *)otherToDo;
+-(NSComparisonResult)compareDeadline:(ToDo *)otherToDo;
+
+
 
 @end

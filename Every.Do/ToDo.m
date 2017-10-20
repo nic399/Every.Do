@@ -36,5 +36,8 @@
     return self.priority < otherToDo.priority;
 }
 
+-(NSComparisonResult)compareDeadline:(ToDo *)otherToDo {
+    return [self.deadline compare:otherToDo.deadline];
+}
 
 @end
